@@ -1,5 +1,11 @@
 import os
 import glob
+
+# ==============================================================================
+#
+#   目的: 新規で商品を出品する
+#
+# ==============================================================================
 import csv
 import time
 import codecs
@@ -470,7 +476,14 @@ def process_products():
 
                 # --- 画像アップロード ---
                 image_pattern = os.path.join(IMAGE_DIR, f"{product_id}-*.jpg")
-                image_paths = sorted(glob.glob(image_pattern))
+                # [修正] 文字列ソートの問題を解決するため、自然順ソートを行う
+                image_files = glob.glob(image_pattern)
+                def natural_sort_key(s):
+                    # ファイル名末尾の数字を抽出して数値として返す
+                    match = re.search(r'-(\d+)\.jpg$', s)
+                    return int(match.group(1)) if match else 0
+                image_paths = sorted(image_files, key=natural_sort_key)
+
                 if image_paths:
                     # 絶対パスに変換（UNC 等対策）
                     image_paths = [os.path.abspath(p) for p in image_paths]

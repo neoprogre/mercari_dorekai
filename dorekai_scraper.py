@@ -111,13 +111,13 @@ def process_mercari_data():
         if '商品ステータス' not in df.columns:
             df['商品ステータス'] = '0'  # デフォルト値として '0' (販売中) を設定
         
-        final_cols = ['品番', '重複', '商品名', '価格', 'URL', '商品ステータス']
+        final_cols = ['品番', '重複', '商品名', '価格', 'URL', '商品ステータス', '商品ID']
         for col in final_cols:
             if col not in df.columns:
                 df[col] = ''
         
         print(f"Found {len(df)} products in Mercari data.")
-        return df[final_cols]
+        return df[final_cols].copy() # .copy() を追加して SettingWithCopyWarning を回避
 
     except Exception as e:
         print(f"An error occurred while processing Mercari data: {e}")
@@ -127,6 +127,20 @@ def main():
     """メイン処理"""
     rakuma_df = process_rakuma_data()
     mercari_df = process_mercari_data()
+
+    # --- ラクマデータにメルカリの商品IDを紐付ける処理を追加 ---
+    print("ラクマデータにメルカリの商品IDを紐付けます...")
+    if not mercari_df.empty and '品番' in mercari_df.columns and '商品ID' in mercari_df.columns:
+        # メルカリデータから品番と商品IDのみを抽出（重複は最初のものを採用）
+        mercari_id_map = mercari_df.drop_duplicates(subset=['品番'])[['品番', '商品ID']].copy()
+        # 品番を文字列に統一してマージエラーを防ぐ
+        mercari_id_map['品番'] = mercari_id_map['品番'].astype(str)
+        rakuma_df['品番'] = rakuma_df['品番'].astype(str)
+
+        # ラクマのデータフレームにメルカリの情報をマージする
+        rakuma_df = pd.merge(rakuma_df, mercari_id_map, on='品番', how='left')
+        print("メルカリ商品IDの紐付けが完了しました。")
+    # ---------------------------------------------------------
     
     print("ラクマデータに削除列を追加する処理を開始...")
     
@@ -165,12 +179,18 @@ def main():
         if 'is_sold_out' in rakuma_df.columns:
             rakuma_df = rakuma_df.drop(columns=['is_sold_out'])
 
-        # 列の順序を調整
-        cols = rakuma_df.columns.tolist()
-        # '削除'列を'品番'の隣に移動
-        if '削除' in cols:
-            cols.insert(cols.index('品番') + 1, cols.pop(cols.index('削除')))
-            rakuma_df = rakuma_df[cols]
+        # --- 列の順序を最終調整 ---
+        # 基本となる列の順序を定義
+        final_cols_order = ['品番', '重複', '商品ID', '削除', '商品名', '価格', 'URL']
+        
+        # 実際に存在する列のみで順序を再構築
+        current_cols = rakuma_df.columns.tolist()
+        ordered_cols = [col for col in final_cols_order if col in current_cols]
+        
+        # 順序定義に含まれないが、万が一存在する列があれば末尾に追加
+        ordered_cols.extend([col for col in current_cols if col not in ordered_cols])
+        
+        rakuma_df = rakuma_df[ordered_cols]
     else:
         rakuma_df['削除'] = ''
         print("⚠️ Rakumaデータに'品番'列がないため、削除ロジックをスキップします。")

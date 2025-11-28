@@ -1,1 +1,10 @@
 2025-11-26 11:39:23,226 - INFO - LINE API Response: Status 429, Body: {"message":"You have reached your monthly limit."}
+2025-11-27 21:00:05,023 - INFO - Found new order from メルカリShops (UID: 353)
+2025-11-27 21:00:05,198 - INFO - LINE API Response: Status 429, Body: {"message":"You have reached your monthly limit."}
+2025-11-27 21:00:05,198 - INFO - LINE API Request failed: 429 Client Error: Too Many Requests for url: https://api.line.me/v2/bot/message/push
+2025-11-28 15:00:04,906 - INFO - Found new order from メルカリShops (UID: 355)
+2025-11-28 15:00:05,929 - INFO - Found new order from メルカリShops (UID: 357)
+2025-11-28 15:00:06,903 - INFO - Found new order from メルカリShops (UID: 359)
+2025-11-28 15:00:07,370 - INFO - Found new order from メルカリShops (UID: 360)
+2025-11-28 15:00:07,542 - INFO - LINE API Response: Status 429, Body: {"message":"You have reached your monthly limit."}
+2025-11-28 15:00:07,542 - INFO - LINE API Request failed: 429 Client Error: Too Many Requests for url: https://api.line.me/v2/bot/message/push
