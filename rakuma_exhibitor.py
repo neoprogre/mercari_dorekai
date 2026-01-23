@@ -1,5 +1,6 @@
 import os
 import glob
+import re
 
 # ==============================================================================
 #
@@ -11,6 +12,13 @@ import time
 import codecs
 from playwright.sync_api import sync_playwright, TimeoutError
 import random
+
+# --- Yahoo Auctions (ヤフオク) 連携 ---
+try:
+    from yahooku_dorekai import setup_driver as yahooku_setup_driver, list_item_on_yahoo_auction
+    YAHOO_AVAILABLE = True
+except Exception:
+    YAHOO_AVAILABLE = False
 
 # --- 設定 ---
 IMAGE_DIR = r"\\LS210DNBD82\share\平良\Python\mercari_dorekai\mercari_images"
@@ -387,6 +395,17 @@ def process_products():
                 return
         else:
             log("✅ すでにログイン済みです。")
+
+        # --- Yahoo用ドライバ初期化（任意） ---
+        yahoo_driver = None
+        if YAHOO_AVAILABLE:
+            try:
+                log("🌐 ヤフオク用ドライバを初期化します...")
+                yahoo_driver = yahooku_setup_driver()
+                log("✅ ヤフオク用ドライバを起動しました。ログインが必要な場合はブラウザで行ってください。")
+            except Exception as e:
+                log(f"⚠️ ヤフオク用ドライバの初期化に失敗しました: {e}")
+                yahoo_driver = None
 
         # --- レート制限対策 ---
         requests_since_pause = 0
@@ -1045,6 +1064,20 @@ def process_products():
                     # 3) 成功扱いで加工済みに登録（必要なら成功判定を更に追加）
                     save_processed_id(product_id)
                     log(f"✅ {product_name} の処理完了（自動送信済み）。")
+                    # --- オプション: 同じ内容でヤフオクにも出品 ---
+                    if yahoo_driver:
+                        try:
+                            log("➡️ 同じ内容でヤフオクへ出品を試みます...")
+                            item_data = {
+                                "title": product_name,
+                                "description": description,
+                                "price": int(price) if str(price).isdigit() else price,
+                                "images": image_paths if 'image_paths' in locals() else []
+                            }
+                            list_item_on_yahoo_auction(yahoo_driver, item_data)
+                            log("✅ ヤフオクへの出品処理を呼び出しました。")
+                        except Exception as e:
+                            log(f"⚠️ ヤフオク出品で例外が発生しました: {e}")
                 except Exception as e:
                     log(f"❌ 自動送信処理で例外: {e}")
                     # 失敗時は従来どおり手動介入に戻す

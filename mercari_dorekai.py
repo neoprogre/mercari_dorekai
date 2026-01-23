@@ -5,8 +5,8 @@ import os, time, requests, json, glob, csv, re
 # === 設定 =========================
 # SHOP_URL はもう使いません（個別商品ページにアクセスします。）
 IMAGE_DIR = r"\\LS210DNBD82\share\平良\Python\mercari_dorekai\mercari_images"
-# product_data_*.csv を探すディレクトリ（IMAGE_DIR の親フォルダにある想定）
-DATA_DIR = os.path.dirname(IMAGE_DIR)
+# product_data_*.csv を探すディレクトリ
+DATA_DIR = r"\\LS210DNBD82\share\平良\Python\mercari_dorekai\downloads"
 PRODUCT_DATA_GLOB = os.path.join(DATA_DIR, "product_data_*.csv")
 SCROLL_TIMES = 10  # 下までスクロール回数（商品ページ内の画像取得のため）
 WAIT_BETWEEN_IMAGES = 0.3  # 秒

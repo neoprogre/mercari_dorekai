@@ -8,3 +8,256 @@
 2025-11-28 15:00:07,370 - INFO - Found new order from メルカリShops (UID: 360)
 2025-11-28 15:00:07,542 - INFO - LINE API Response: Status 429, Body: {"message":"You have reached your monthly limit."}
 2025-11-28 15:00:07,542 - INFO - LINE API Request failed: 429 Client Error: Too Many Requests for url: https://api.line.me/v2/bot/message/push
+2025-11-29 12:00:04,538 - INFO - Found new order from メルカリShops (UID: 367)
+2025-11-29 12:00:04,699 - INFO - LINE API Response: Status 429, Body: {"message":"You have reached your monthly limit."}
+2025-11-29 12:00:04,699 - INFO - LINE API Request failed: 429 Client Error: Too Many Requests for url: https://api.line.me/v2/bot/message/push
+2025-11-30 09:00:05,032 - INFO - Found new order from メルカリShops (UID: 369)
+2025-11-30 09:00:05,451 - INFO - Found new order from メルカリShops (UID: 370)
+2025-11-30 09:00:05,872 - INFO - Found new order from ラクマ (UID: 371)
+2025-11-30 09:00:06,330 - INFO - Found new order from メルカリShops (UID: 372)
+2025-11-30 09:00:06,984 - INFO - LINE API Response: Status 429, Body: {"message":"You have reached your monthly limit."}
+2025-11-30 09:00:06,984 - INFO - LINE API Request failed: 429 Client Error: Too Many Requests for url: https://api.line.me/v2/bot/message/push
+2025-11-30 15:00:05,403 - INFO - Found new order from メルカリShops (UID: 375)
+2025-11-30 15:00:06,049 - INFO - LINE API Response: Status 429, Body: {"message":"You have reached your monthly limit."}
+2025-11-30 15:00:06,049 - INFO - LINE API Request failed: 429 Client Error: Too Many Requests for url: https://api.line.me/v2/bot/message/push
+2025-12-01 09:00:04,746 - INFO - Found new order from メルカリShops (UID: 377)
+2025-12-01 09:00:06,173 - INFO - Found new order from メルカリShops (UID: 380)
+2025-12-01 09:00:06,703 - INFO - Found new order from メルカリShops (UID: 381)
+2025-12-01 09:00:07,367 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"590081366168174673","quoteToken":"XRZ1iPepLmWnH90PFBdNpcz_T4tFuCI7VdnpXPhSBWyI7DhIbvD7JMLFviqJlOqGpirMMZPJu-GqQqNW8lBfoe2sXYki_wK9O22HoWeSu7k_4yNpskUK6Mzw820B1VW7UzJTE9Pug2fYp7WLII5XTg"}]}
+2025-12-01 09:00:07,378 - INFO - LINEに3件の注文を通知しました。メールを既読にします。
+2025-12-02 09:00:06,323 - INFO - Found new order from メルカリShops (UID: 388)
+2025-12-02 09:00:06,799 - INFO - Found new order from メルカリShops (UID: 389)
+2025-12-02 09:00:08,775 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"590226325089026314","quoteToken":"siWL8US00otjzk_cmuOGGymsfFF2bBSJmRIO1lI23dc8bmG4FicxA5jRmxyFu9BG5bzZM7Qtp9h-YC-krsBR3ID8Wlz4vkTtw82KZJlcuCwCyKVflvWVny59WKhwWkl_oHTZ_Mpja9ygw1x3MznS5A"}]}
+2025-12-02 09:00:08,777 - INFO - LINEに2件の注文を通知しました。メールを既読にします。
+2025-12-02 12:00:05,221 - INFO - Found new order from メルカリShops (UID: 394)
+2025-12-02 12:00:06,341 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"590244440304779438","quoteToken":"J-oRYJG71iKBONyM_w_xBtPFXw2MVZt3un4npXpi1gS593d7E-8KQFRDlv-TY5rVNkX0MJpzchMhqs0FiPtdxO_yuRBZNAXEsWBVCpWLX4loUX6tgWvMzidAbBgPJjE38a7plrCKO_yFFBh2WuAIOA"}]}
+2025-12-02 12:00:06,344 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2025-12-03 09:00:06,356 - INFO - Found new order from メルカリShops (UID: 401)
+2025-12-03 09:00:07,057 - INFO - Found new order from メルカリShops (UID: 402)
+2025-12-03 09:00:07,622 - INFO - Found new order from メルカリShops (UID: 403)
+2025-12-03 09:00:08,139 - INFO - Found new order from メルカリShops (UID: 404)
+2025-12-03 09:00:08,833 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"590371278994276377","quoteToken":"o07T76iJFLuXlhMXJ9EGL77oN4YAtN44EHrA9_u1S_3e9MZOEOifsKAZVPxFYXR-GHPwb9BAYZeqpNje_QIiWLGGILSf6X2_9uaQto13wMKUJIJEsDH4pw2Xu9JvHZW9J2MfWiCUBTIGcK4rF1XQeQ"}]}
+2025-12-03 09:00:08,833 - INFO - LINEに4件の注文を通知しました。メールを既読にします。
+2025-12-03 15:00:04,217 - INFO - Found new order from メルカリShops (UID: 407)
+2025-12-03 15:00:04,606 - INFO - Found new order from メルカリShops (UID: 408)
+2025-12-03 15:00:05,242 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"590407511220682921","quoteToken":"XTcfCF8xsZI-NUl2zTfkyY_-qnQnZ_p2RsD8eGwDwX1lMueLI_4Y0C2F_z-jKFVHa_gEF8SQ8O87j3UDVG0jGQeUhKynmAZAeTiWocWgChiojXH6x2jJUPxqcL6BdFxBtgDxveG9bxNxgwF4NvfOsw"}]}
+2025-12-03 15:00:05,242 - INFO - LINEに2件の注文を通知しました。メールを既読にします。
+2025-12-04 09:00:06,055 - INFO - Found new order from メルカリShops (UID: 412)
+2025-12-04 09:00:06,710 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"590516232127251048","quoteToken":"73Ztii6siAAYW8q2PDGBuw7h72BWD35jc4yBTIk603NWZG_fCBCjfJALhHiF_5R-wj9fHyzASy7oNA3V6V0ZjK-9EAgAgkcfTg0GxxQPbsnFi0nm2cPiCvDPUiNePrWMFot6BLEQrgrEx4rLgZgP8g"}]}
+2025-12-04 09:00:06,710 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2025-12-04 15:00:04,490 - INFO - Found new order from メルカリShops (UID: 415)
+2025-12-04 15:00:04,667 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"590552466669175377","quoteToken":"3p2z8yyVmF4LykqCYiyBJ5hwh5Rx0bQ99I29z86UvO5sdt12AuGpLDkIY1PyrYGywW1x2AZVZ4BRwcP_WlNOW7-wrmG1uTOB1OiTcniCkHTMDH0-2qL_TrZVRbIaxBMHHIu3t1jhQg51IDIAF5wnjg"}]}
+2025-12-04 15:00:04,678 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2025-12-06 09:00:04,906 - INFO - Found new order from メルカリShops (UID: 423)
+2025-12-06 09:00:06,103 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"590806140037103962","quoteToken":"ahPB2FuhJs8pvVSijGyRFebqS0_DxuEa4RVvWGXWwrpHingL96XNudSQRB6bG0d8sKNMkLkb1JH-QvuQ42gYm_walWWgZRGkBS-RZMyhjAutquFljrzsfZJnOFvaZO_mVjm-73sq-ffE_D0A9s4tIA"}]}
+2025-12-06 09:00:06,118 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2025-12-08 09:00:05,261 - INFO - Found new order from メルカリShops (UID: 428)
+2025-12-08 09:00:06,286 - INFO - Found new order from メルカリShops (UID: 430)
+2025-12-08 09:00:06,744 - INFO - Found new order from ラクマ (UID: 431)
+2025-12-08 09:00:09,442 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"591096055513481290","quoteToken":"fIoNDgDdbGbC8tU2RF1vVBJvVse2geuFVN6h6G5Yit-xt64g5JwVsqWLUb_mzgkuOzIADm3MvgZcIewbBIgaXCWdt3xTDoKFmBUdOiwg44cbjm1JWJtM8Fn00zqb02D4zqEQpiUsvsbd5i1soZ-t_A"}]}
+2025-12-08 09:00:09,458 - INFO - LINEに3件の注文を通知しました。メールを既読にします。
+2025-12-08 12:00:05,188 - INFO - Found new order from メルカリShops (UID: 437)
+2025-12-08 12:00:06,319 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"591114169739117363","quoteToken":"W-Ye-e-HHez8w8EEhiRKfJbAZLJhFuf925V3AQZudVKZpqrgQJZitz6P_HQ_PXuj4IAHlFRAuUjGYeuG7kUMPN_3mGsxJK5ioVXcPFVXqbxPBUBSv39zmljt7Hi5u12Qzvcqv7tkGrt9NfbtZ7DWqg"}]}
+2025-12-08 12:00:06,319 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2025-12-09 09:00:05,593 - INFO - Found new order from メルカリShops (UID: 443)
+2025-12-09 09:00:06,016 - INFO - Found new order from メルカリShops (UID: 444)
+2025-12-09 09:00:06,452 - INFO - Found new order from ラクマ (UID: 445)
+2025-12-09 09:00:06,645 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"591241007589490778","quoteToken":"KfuRaYiY6JQ20oM9K0Yd802-sCRJyWfv8japRRsvWq327teJEs769qwW6Nydyx1871ml32SsHdVi1GH7Nq2TNiue7UjvQBHxAyO8jsnYNXOXiWxJ3ldVgchDi1gK-4sfey0NeOQa1UVr7567bGB6PQ"}]}
+2025-12-09 09:00:06,645 - INFO - LINEに3件の注文を通知しました。メールを既読にします。
+2025-12-09 15:00:07,218 - INFO - Found new order from メルカリShops (UID: 451)
+2025-12-09 15:00:07,698 - INFO - Found new order from メルカリShops (UID: 452)
+2025-12-09 15:00:07,895 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"591277248204767592","quoteToken":"-Frbx62RYC0CUnGqrvk37BizF5Y9GXznCw_CwtH9uooXBRaxcShgXbdeszb_eZiBnrcoYUe0TXWBXfpeSvAecikzwNUpis1c1WptlNIjqqxZIvRiUXIdWna4F-AzCkUne4ggG2NNLNvRZjFsiXJM1A"}]}
+2025-12-09 15:00:07,895 - INFO - LINEに2件の注文を通知しました。メールを既読にします。
+2025-12-10 09:00:06,320 - INFO - Found new order from メルカリShops (UID: 457)
+2025-12-10 09:00:07,674 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"591385964463522321","quoteToken":"bdceT7gMceCiqtcuwRNmN1rp79SNJOPIq_CfABn4__kMcQ2HnYj4cGQ_Zvi0jzRSQxTr0UEZjDPfCH-N1oiLbBD_dqXoSsBghm4aWqSvGoo5gms4rZ66qARrKI4RbzpSI5fFJZWWFKLHCi4s7jvzjg"}]}
+2025-12-10 09:00:07,674 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2025-12-10 15:00:05,744 - INFO - Found new order from メルカリShops (UID: 462)
+2025-12-10 15:00:05,983 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"591422199894900971","quoteToken":"efoK6EaHZuhNxtxOJoTS1Ub1xTKaRB4SBtD-r482FWvd10FgDdvqwxr9KNLoua8cC_3mZ3B6Z2F-2EF1sKCyoMg0sufMBZ22wPgNaPyU1iXqKBBX3XWnsNDc6yU5FGm_Lthn78gniyjFdGOn3S0LSA"}]}
+2025-12-10 15:00:05,983 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2025-12-11 09:00:05,621 - INFO - Found new order from メルカリShops (UID: 464)
+2025-12-11 09:00:07,039 - INFO - Found new order from メルカリShops (UID: 467)
+2025-12-11 09:00:07,990 - INFO - Found new order from メルカリShops (UID: 469)
+2025-12-11 09:00:11,638 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"591530924408832310","quoteToken":"8rsWOFpZU7mjofucm-WB41qV_f5dKlS_3flw_FnS6OMvPKAvSHIcKGWx2Y8flrAy4LnOCQ8L8VrhykFLsowPy3B187Nikspj_88K7kgfL_KeD34xlHpROccyfZzCssz2ClcSJF8YfHnfIdUOj0_pvw"}]}
+2025-12-11 09:00:11,638 - INFO - LINEに3件の注文を通知しました。メールを既読にします。
+2025-12-11 15:00:05,975 - INFO - Found new order from メルカリShops (UID: 479)
+2025-12-11 15:00:06,196 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"591567153464607530","quoteToken":"opGhtWsDcVS5uzbg-8oA-Dgr5_3xnlSn6wqKBokIc9pD1u9jJPQwX_zbzg8WeJHRxFC-BwULDhOoVC-aaJwyFZukFdlPltWotwHzkMZB_PyWuL4FH-T4M8KprIpfWJzF7WJU0g7BbRhW8JTFmVb6IQ"}]}
+2025-12-11 15:00:06,199 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2025-12-12 09:00:05,528 - INFO - Found new order from メルカリShops (UID: 481)
+2025-12-12 09:00:08,242 - INFO - Found new order from メルカリShops (UID: 487)
+2025-12-12 09:00:08,714 - INFO - Found new order from メルカリShops (UID: 488)
+2025-12-12 09:00:09,116 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"591675876668866928","quoteToken":"5sQInGV-oDSyW27tSLSpK98BOln6gi8zRWI22o4ZkPyc-H8pnnqEeLSKI-gwHI4QpGAmlQwBWPrMVR-hzsvr7-IX7jajCWZPTztLUg-I1b6x8YdsYNaXnVVY_n5DskBaOPWIoTdt53yTRzb9F1UeUw"}]}
+2025-12-12 09:00:09,119 - INFO - LINEに3件の注文を通知しました。メールを既読にします。
+2025-12-12 12:00:04,442 - INFO - Found new order from メルカリShops (UID: 489)
+2025-12-12 12:00:04,629 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"591693988545692132","quoteToken":"V5uJzNODKu4dKJQX3w-jy-cHy9Jg1kWGQHk3gqO57luYHlLwrEsySiPIK4HY2mVYGWRasBeHkEvVACDbJQl1VtQSa0vmeHWWnAKEPI3qNDQE6mhAMATSLHDWgw2IeMOFJ7XEw06aAvUbow21hvpecA"}]}
+2025-12-12 12:00:04,633 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2025-12-13 09:00:05,839 - INFO - Found new order from メルカリShops (UID: 497)
+2025-12-13 09:00:07,214 - INFO - Found new order from メルカリShops (UID: 500)
+2025-12-13 09:00:09,087 - INFO - Found new order from メルカリShops (UID: 504)
+2025-12-13 09:00:09,583 - INFO - Found new order from ラクマ (UID: 505)
+2025-12-13 09:00:10,002 - INFO - Found new order from メルカリShops (UID: 506)
+2025-12-13 09:00:10,987 - INFO - Found new order from メルカリShops (UID: 508)
+2025-12-13 09:00:11,227 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"591820835656826903","quoteToken":"u1y6sueCT1yYehHV9iQTwR3fbgJhkEK88SHQZ1Wixmp-P_GCq-yY1w_buMR3_FMjZzahqh4UmfFq-cGCDrzCem8MvUQdgzs7P9KJfbV0gkh7HrVNadNBGsourtaWBtjE2tZN1JmrwTuEJ2detBucQg"}]}
+2025-12-13 09:00:11,227 - INFO - LINEに6件の注文を通知しました。メールを既読にします。
+2025-12-14 09:00:05,188 - INFO - Found new order from メルカリShops (UID: 509)
+2025-12-14 09:00:05,594 - INFO - Found new order from ラクマ (UID: 510)
+2025-12-14 09:00:05,803 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"591965781861335573","quoteToken":"CE04G1bdYLGjmkfbBYV-OpafWGwEH3ZkicJm9DCI_BUkJ_JGuDVWcNjEu_e4dUM4rXvIn1okadUMFNY5RfpRlttYzl-PoYK5NLDgCPmuu8qlWhSY-iuBEuQai0sJOqqMBQ18u_pOBEEZh9e4fAyqlg"}]}
+2025-12-14 09:00:05,803 - INFO - LINEに2件の注文を通知しました。メールを既読にします。
+2025-12-15 09:00:06,917 - INFO - Found new order from メルカリShops (UID: 516)
+2025-12-15 09:00:07,126 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"592110738953470585","quoteToken":"0BaoUAYhoD0RJG5J2f3ivHeInDh8TlXt4z5DP7TiG7Dg4kCiJsz7UNz-I0c0joeZEbDOM4_SGWK5v4R9rHSEeiwpkpTi9oVZtHoEERsHv-OiWkG5jJ5yYAt2VMI8ecbPo_dCBYGv9pMkCGVZYoSDLA"}]}
+2025-12-15 09:00:07,126 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2025-12-15 12:00:06,379 - INFO - Found new order from メルカリShops (UID: 518)
+2025-12-15 12:00:06,669 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"592128857406963824","quoteToken":"wqyX8e0kD645T9KrNfkohkD1sJ8mqLf0zHYWYitclYi-7Os9tU48bGaJUVkppger6whAzoknL8IDcru_GhHW0owzAhtp6dcgGQ4j9kZZdH1MbxqO2B284p8vz5SmzjJymoIU-JrUayXNK-1Vknp_jg"}]}
+2025-12-15 12:00:06,671 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2025-12-15 15:00:06,003 - INFO - Found new order from メルカリShops (UID: 520)
+2025-12-15 15:00:06,245 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"592146975944868141","quoteToken":"xpKJlimnokjzlsefEkBWSbXzVyS3cANMUj1tZOOfr2eObyA2R6fiY62OnSk1ECqpWFg1S0EJhzILo05oLZok-ylSu8GqM93LoD10GzRwvmipsKsYsJsAfDMBeI75nVSYw2t0c6NX0Zyd40sltf71sw"}]}
+2025-12-15 15:00:06,249 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2025-12-16 09:00:06,410 - INFO - Found new order from メルカリShops (UID: 523)
+2025-12-16 09:00:07,364 - INFO - Found new order from メルカリShops (UID: 525)
+2025-12-16 09:00:07,555 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"592255695157199191","quoteToken":"92X4Q_eraa0_WnRm4NP1I011wgLbvChRSCKygBvrwTruAbfEJB6kzOZcBGC-PJI30UuehqYebA0aG8nZWlpkiwFBl2MCDDgli9amHN3vps_FvF0Uxs22Uvqw7wBgTDIs_Eq-8wyESx6JBEKD6cI6Mg"}]}
+2025-12-16 09:00:07,555 - INFO - LINEに2件の注文を通知しました。メールを既読にします。
+2025-12-17 09:00:05,651 - INFO - Found new order from メルカリShops (UID: 527)
+2025-12-17 09:00:06,605 - INFO - Found new order from メルカリShops (UID: 529)
+2025-12-17 09:00:07,551 - INFO - Found new order from メルカリShops (UID: 531)
+2025-12-17 09:00:08,497 - INFO - Found new order from ラクマ (UID: 533)
+2025-12-17 09:00:09,196 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"592400652920160690","quoteToken":"NyMWLptegnLdGREWfJzWHjYoT12y-Oi9JL5Bb9VW6jgky4xwTRxKyf0W16LJbbURu_RoKWCKuB07YtFNAqkvHW-4OPQm-4GH1IAy8h9HjW4rrU_xpkyK-_xD-nOi0giV0l8pP5oRiSlFUMT40PciLg"}]}
+2025-12-17 09:00:09,200 - INFO - LINEに4件の注文を通知しました。メールを既読にします。
+2025-12-17 15:00:07,863 - INFO - Found new order from メルカリShops (UID: 536)
+2025-12-17 15:00:09,014 - INFO - Found new order from ラクマ (UID: 537)
+2025-12-17 15:00:10,214 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"592436892814541488","quoteToken":"_ZtCOAaBQzPf9eLa_LGKNZDGuKoVrYmjLPlz67oivI2tuB9suPpfyfzKpBU0AiCDe12cZbPXcdmiJA5xkJLcLXktZ_MEjY8ZqKrbJ2cVv3GfoZagluCXzYJNIMb9KfBImM1LRfwciiT1SsDdNndXMw"}]}
+2025-12-17 15:00:10,231 - INFO - LINEに2件の注文を通知しました。メールを既読にします。
+2025-12-18 09:00:05,830 - INFO - Found new order from メルカリShops (UID: 539)
+2025-12-18 09:00:06,893 - INFO - Found new order from メルカリShops (UID: 541)
+2025-12-18 09:00:08,492 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"592545606925811955","quoteToken":"nQg5tisGni4oEMM5wmpZqh1ZG-VGzt0YZb_hlE0hsbKF6uU67XR9Cu3LIPZkecR_SajzWrb00-vWDs4HtymD6iwYkuBGG8d9I2z9Tl-_ZPC0iTE0kFAXc0MTEM2IzlSBXWPXkwctHtteVGYhvB2kdg"}]}
+2025-12-18 09:00:08,508 - INFO - LINEに2件の注文を通知しました。メールを既読にします。
+2025-12-19 09:00:04,939 - INFO - Found new order from メルカリShops (UID: 546)
+2025-12-19 09:00:05,468 - INFO - Found new order from メルカリShops (UID: 547)
+2025-12-19 09:00:06,361 - INFO - Found new order from メルカリShops (UID: 549)
+2025-12-19 09:00:07,376 - INFO - Found new order from ラクマ (UID: 551)
+2025-12-19 09:00:08,094 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"592690561468334591","quoteToken":"ERcdiVof3uWW1-EU9_asbZM5ARaNtqHiM6MOncSFO7sOiNiVh-yJAuSEqF6ZN7vQ4jYCL-pZpDWa5ET_BUYhATn4p7yTMRiP5N7lVJ-VZJu9oOQ3SZTaXkS71Dogu45SOcjUKwwPCtEDdFZf_v1eBg"}]}
+2025-12-19 09:00:08,100 - INFO - LINEに4件の注文を通知しました。メールを既読にします。
+2025-12-19 15:00:04,949 - INFO - Found new order from メルカリShops (UID: 556)
+2025-12-19 15:00:05,251 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"592726795053695267","quoteToken":"wY92OwBfQf31G7APj-we5y3oQ_dXSCkWKyU87mRDFIFcXsT1dRzIrreWHfzmjN0WMWgZJQZEs9slKU73WhYn2_I81JY9ZksfnqvPCukOb_36-TCratLxgR3t_mOccdQUHUGQGHMPpC7EDEki1G1QbQ"}]}
+2025-12-19 15:00:05,251 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2025-12-20 09:00:05,618 - INFO - Found new order from メルカリShops (UID: 557)
+2025-12-20 09:00:06,515 - INFO - Found new order from メルカリShops (UID: 559)
+2025-12-20 09:00:07,216 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"592835515138179370","quoteToken":"PJUOwjqXUFZJhPpFsjxbYg2fuA1JEMOnrjDN7LEv37vqB6okGd_3CEOZi198KGwTfg-DiLabb-32ugTWQatR5oIRyuhWTTN-ek33BWHiwESbQJVu2TOgfDjv5_YvGKUvbiiC2cP-m8iporiQ0xBDjw"}]}
+2025-12-20 09:00:07,216 - INFO - LINEに2件の注文を通知しました。メールを既読にします。
+2025-12-21 09:00:05,123 - INFO - Found new order from メルカリShops (UID: 564)
+2025-12-21 09:00:05,524 - INFO - Found new order from ラクマ (UID: 565)
+2025-12-21 09:00:07,906 - INFO - Found new order from メルカリShops (UID: 570)
+2025-12-21 09:00:08,134 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"592980470066053328","quoteToken":"M67cRI38YqLq4vSXQsLOmPbdr4hFyFlNZFrzvQUr1gmfBAydgX3K2bbpX4Eh5--05zHCHKYI9Z05JixqYImDC2r6oR4NJ0r8RoXu1rzHCp2EN3xmldxdP3fDHGwxm701AzNT7DEZ_gRJsQUAbYc2sg"}]}
+2025-12-21 09:00:08,141 - INFO - LINEに3件の注文を通知しました。メールを既読にします。
+2025-12-22 09:00:07,545 - INFO - Found new order from メルカリShops (UID: 575)
+2025-12-22 09:00:08,285 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"593125427108118821","quoteToken":"GLTmdNZXZdCVNiQvUddfcg-QRDUAaOTyk_uRND9YNtU22goYH2CGEU8AvNRv7a6VoUXRhWrNv2DE3nUUKL50zTTbE3EwQXnYh4RDqQLPdvaQEpkUZQZqoNtxoRc-dl3Qnu5dpl2sLnQDEZemdjjP2Q"}]}
+2025-12-22 09:00:08,285 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2025-12-23 09:00:05,446 - INFO - Found new order from メルカリShops (UID: 580)
+2025-12-23 09:00:05,873 - INFO - Found new order from メルカリShops (UID: 581)
+2025-12-23 09:00:07,753 - INFO - Found new order from メルカリShops (UID: 585)
+2025-12-23 09:00:08,349 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"593270382656487615","quoteToken":"uP0UObg4z--M5dcrXZsBPQ7PfaXXuMrbinQOm1VcAynPD7c0m5wRPmQ21bR0x0j1GtW-yOUbLdzhiKcE66W_exD40Vyvj6KPVqxCZIkNTpSyd_7kqgUhVtbLtDPPZneqEgaVutWiUJKpOaL5aBAFjg"}]}
+2025-12-23 09:00:08,365 - INFO - LINEに3件の注文を通知しました。メールを既読にします。
+2025-12-24 09:00:06,505 - INFO - Found new order from メルカリShops (UID: 590)
+2025-12-24 09:00:06,940 - INFO - Found new order from メルカリShops (UID: 591)
+2025-12-24 09:00:07,413 - INFO - Found new order from ラクマ (UID: 592)
+2025-12-24 09:00:08,287 - INFO - Found new order from メルカリShops (UID: 594)
+2025-12-24 09:00:09,182 - INFO - Found new order from メルカリShops (UID: 596)
+2025-12-24 09:00:10,088 - INFO - Found new order from ラクマ (UID: 598)
+2025-12-24 09:00:10,287 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"593415339363795054","quoteToken":"dYxA_2RECk03VR0CQ9zYS-E69BBhf1DU1hkd47fA93xF7MsMIA_zhudg91dBkCUH5gtAsZN1kU9SvCDcWjSzriE43rTi1GoQVFhWCh-KLkTK7CaFsKVrHVZgHsP2Vl11BwSQkVjFd-NP7LbTjSy0xA"}]}
+2025-12-24 09:00:10,292 - INFO - LINEに6件の注文を通知しました。メールを既読にします。
+2025-12-24 15:00:04,275 - INFO - Found new order from メルカリShops (UID: 600)
+2025-12-24 15:00:06,707 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"593451571740672350","quoteToken":"gM__dO3JrBTSznyZZ7Jq2WSu83S_6b_hyJzTEj8JDZUqk8G6Gio8MmAP6GfIWu-QoR_ylLbHJEvTNgV4bniGPOWJ8Pq2owkn8hGZpRFCQTLI3CiXVIAd2YjR-kN09dGrWfBPSuGO_iDfSOy9l05Oiw"}]}
+2025-12-24 15:00:06,711 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2025-12-26 09:00:05,332 - INFO - Found new order from メルカリShops (UID: 610)
+2025-12-26 09:00:05,542 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"593705241485509359","quoteToken":"gEDfkksG22A5zUvgTana5wsiLf37Iv16e0VNfByl5B0FMOsHElpC-wpjZdyQ5NdcAWpElqRV7OfuMz5_Rz4FEj8Ync-KHsgJuM1yvve-ko9gPnfb2OmHI89zJiJCav5lAYAKIgJ89ziN0i-M5tEo_A"}]}
+2025-12-26 09:00:05,542 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2025-12-26 15:00:04,666 - INFO - Found new order from メルカリShops (UID: 611)
+2025-12-26 15:00:04,938 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"593741476362715667","quoteToken":"KnvxxpVGY59Odb2bokDZoDeX7d3d5Jct5fbJVPxXqEI1d4jF8S18YaMqe1bYwlrqgrISx_YhnW84WJgARFkb60P8ocCTL3xSL9feikG9FGcp2jAtjR0TOIXNQVTSsyPQJ0UQc3fH2aJssgMAWrjvOA"}]}
+2025-12-26 15:00:04,938 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2025-12-27 09:00:05,898 - INFO - Found new order from ラクマ (UID: 613)
+2025-12-27 09:00:07,476 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"593850201379176856","quoteToken":"SmgDsPAYO4nzDj3-LS0VBzunEQ2TNXK1V2ysgyazjGpegwkf613a1sdGkkAE-lcdFGsFLYfZC1o2pUvzGzT_wmP5GiD_Vrahr3bST2FDIV1oDW3cIvlwDHUdwJFFkd6QjVlwpyGb_-R8YIx0QuYHdw"}]}
+2025-12-27 09:00:07,481 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2025-12-28 12:00:04,994 - INFO - Found new order from メルカリShops (UID: 618)
+2025-12-28 12:00:05,188 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"594013270483140763","quoteToken":"Y-b4Yy9MhBMMo9MNkgStIGqhNmXlfmr5RCvcscUaOgCub3wruEA-R04YdhyTjrU_pFV20bW4z1vr_QJUJGNBooTRUIYtN0ZftdXbkZk9mCB-nPbvhdkSTiAgQYZzifXmIxC0dkLTjo4awL2l8sEgAw"}]}
+2025-12-28 12:00:05,188 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2025-12-29 09:00:05,304 - INFO - Found new order from メルカリShops (UID: 619)
+2025-12-29 09:00:06,263 - INFO - Found new order from メルカリShops (UID: 621)
+2025-12-29 09:00:06,709 - INFO - Found new order from メルカリShops (UID: 622)
+2025-12-29 09:00:07,145 - INFO - Found new order from メルカリShops (UID: 623)
+2025-12-29 09:00:07,322 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"594140111504147171","quoteToken":"Wii5LKnCu48u0uCVgjPZNS8OFB5NhzmALFeNWVyuBygPxN57IlpPJVbxnuoeh4jDOlmXEwH44r43ZUh0qw2-13esvge-S214KhW2stvvtJSQ5esBPYYZU3tyrhu_h93jpLfNMobjz-K0akUr5tIn8g"}]}
+2025-12-29 09:00:07,322 - INFO - LINEに4件の注文を通知しました。メールを既読にします。
+2025-12-31 09:00:06,269 - INFO - Found new order from メルカリShops (UID: 628)
+2025-12-31 09:00:06,473 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"594430020572414191","quoteToken":"h-vSJLGc0L44_NkD1yEabRROk_bPptTVTHozAeqGgJcV6ws7nXCXiY5H4tbNILNpLBBKq26KcMmnEUofF4SMqVc-aGqDrY0lxqZm5sZCtVCALCTKIdVKQhhvJQu1sVTPJ88w5diwY0yCMrPf-zF35g"}]}
+2025-12-31 09:00:06,473 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2025-12-31 12:00:05,335 - INFO - Found new order from メルカリShops (UID: 629)
+2025-12-31 12:00:05,945 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"594448138589963121","quoteToken":"he5ELmkZsqMkFWa303vJtw16BwNiXN7oj5ige5zbuCwtuaCDf1n_VB0pCRe4VFZBzkajrIhbj_st8lWTZc8pqP1pipiC_l_9gT4BPqqWIhQ2z5Jel0fjLQsLsk4Qhvn6f2l4wImqmQDvXevQTMCXeA"}]}
+2025-12-31 12:00:05,961 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2026-01-04 09:00:05,210 - INFO - Found new order from メルカリShops (UID: 637)
+2026-01-04 09:00:05,390 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"595009839076737245","quoteToken":"VLjyQjZxWBlY8FkFy9Ea27E_Jgs-_SjoIaBv8UlsHF_Wg778TeHNlsXYCButM0uPIAHLZVMybtCerEsII2_psV7LeGbHuJ2Ktzjyalkpux9AH4dngfh95qyP5ShtixSVP7lL449YHDoZ8UGRSGfrqw"}]}
+2026-01-04 09:00:05,390 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2026-01-05 09:00:06,452 - INFO - Found new order from メルカリShops (UID: 641)
+2026-01-05 09:00:06,933 - INFO - Found new order from メルカリShops (UID: 642)
+2026-01-05 09:00:07,545 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"595154796185387173","quoteToken":"dYvRqKuKoBXxnuHbrjsCTyaq07tIDX70kYp0C4zIHf-kWlRzmlZq6KugLFoTXtqMexDq9cEeEOmUs7FmCcbeEI46ylE7GvzXfNN5r0aIoxabeo-vtaSoenVZ_6nfADBSVXf7P6QSf3viNaTShsuF8w"}]}
+2026-01-05 09:00:07,545 - INFO - LINEに2件の注文を通知しました。メールを既読にします。
+2026-01-06 09:00:06,620 - INFO - Found new order from メルカリShops (UID: 647)
+2026-01-06 09:00:07,108 - INFO - Found new order from メルカリShops (UID: 648)
+2026-01-06 09:00:07,302 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"595299752606958069","quoteToken":"5P0yFTOcDZzPwLuXG-3Qj0P0gxRSFOcGYrGzY2-u_QEKgxvUGAVkDP61v_bwh6GesXHXtGHdLn-QCsjlncL-RRd5e0LvzxCfRnlGy73UlGQvzxClK56vTBbI9Rp34qjCsOC4bvdgeySVG0Q6dl7jlQ"}]}
+2026-01-06 09:00:07,302 - INFO - LINEに2件の注文を通知しました。メールを既読にします。
+2026-01-07 09:00:05,504 - INFO - Found new order from メルカリShops (UID: 649)
+2026-01-07 09:00:05,701 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"595444703508824787","quoteToken":"aRfiSJl-GmqUTtqBbzM48w_xGS3U4NRc_yQQNfK0aQl-YHqrjHVqtfvYuLvsDwhSFsXAiaTOdjtO1lCTD1N0kBuJrqrUsn1wMkwrOOPUdbTuXQfPrJWbgGqkpd-2VXcEBRQIa3QvXOrfejTVugXxbQ"}]}
+2026-01-07 09:00:05,710 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2026-01-08 12:00:05,235 - INFO - Found new order from メルカリShops (UID: 653)
+2026-01-08 12:00:05,738 - INFO - Found new order from メルカリShops (UID: 654)
+2026-01-08 12:00:05,961 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"595607779725804059","quoteToken":"RKr_cAGoCvbq1MxA2F7I8OepW1b1iHDTY6rE7rqH39HHFqFITLT03VzXjcKZbeLvqaqP1qWN0yf-_w_UzFzP8Vrsv77HzOQcnj_QOLx1E682EQk9gR3cV6Dh0IVCRnKcQvqaff4-J__0Pu-kfx_4vw"}]}
+2026-01-08 12:00:05,961 - INFO - LINEに2件の注文を通知しました。メールを既読にします。
+2026-01-09 09:00:05,802 - INFO - Found new order from メルカリShops (UID: 656)
+2026-01-09 09:00:06,004 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"595734616485920888","quoteToken":"TfTfHwkyUzc2u2bQVioiwJEV_6cZ6rw6HqVahfb-euRLDC8BPF0CJi0HqQsqSTJTjhRem8UwGBVSEa2UJYriwwV7mbKJycZKpuaX6nHWvhJ2KwFj8zdLV4CgJt8A2p8JP6ZtHVcVUtDo-1R1N5qhdg"}]}
+2026-01-09 09:00:06,004 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2026-01-10 09:00:05,267 - INFO - Found new order from メルカリShops (UID: 657)
+2026-01-10 09:00:06,576 - INFO - Found new order from メルカリShops (UID: 662)
+2026-01-10 09:00:07,097 - INFO - Found new order from メルカリShops (UID: 663)
+2026-01-10 09:00:07,289 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"595879572068106251","quoteToken":"O4qBFQlTkryYVAYvpjeUn7gSO_T_rDrYkpxh8SQVH1Py01_1UNi7u5KZVDznxXkoha3ZyTIcAiaQlcxXI06iEvh_xQ4GZVyJ8-8fp5DDA2AO21ZhJWS4OvfLhvRN_7e-IKJOXv2OKROAvNC5GeQFfw"}]}
+2026-01-10 09:00:07,289 - INFO - LINEに3件の注文を通知しました。メールを既読にします。
+2026-01-10 15:00:04,906 - INFO - Found new order from メルカリShops (UID: 664)
+2026-01-10 15:00:05,122 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"595915806895243385","quoteToken":"CpbvQYW8X06sa58iHTAg0Jc0bUIMxZ1xY6OYlyJKsZovdMDrsLtHgUqLgKdYOkpnkrHO7eiQa5SPzDl45YLuLZsNusu-3ydhUm33caxVrkKburmtdsBUxLohyDCDazBjawqoYxO8YkKeMcNT5ovWQg"}]}
+2026-01-10 15:00:05,131 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2026-01-11 09:00:04,724 - INFO - Found new order from メルカリShops (UID: 665)
+2026-01-11 09:00:05,226 - INFO - Found new order from メルカリShops (UID: 666)
+2026-01-11 09:00:05,414 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"596024525100417580","quoteToken":"9zmXJN5lKdfSJC4J1030346UsRgv3jcQFbRp8MMgUYz9IN8gRzuToL_YiW4rLCaJ8F4nLEHVCfCPLrWvQhpGme7JUKAOjJdBXaVjNd6UX9e36fHYeyeMzrJbYiet4Zfb2gpjYxBwbjVwp3I_KA489A"}]}
+2026-01-11 09:00:05,417 - INFO - LINEに2件の注文を通知しました。メールを既読にします。
+2026-01-13 09:00:05,658 - INFO - Found new order from メルカリShops (UID: 667)
+2026-01-13 09:00:06,402 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"596314437188059600","quoteToken":"fwTxap_q0y7vKL18NxeAmORseI3I2vftXhwEQnavAg_aFEquEJw81tRAa5i5vd1AJ2HYii8VilV1SVQgi722TUf9-ELBzqAJy2MVg0szIzLzaFd2IdFbtzhpPBhEpMcA2vTIEFA94xIk0k3niUIUWw"}]}
+2026-01-13 09:00:06,402 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2026-01-13 15:00:06,155 - INFO - Found new order from メルカリShops (UID: 671)
+2026-01-13 15:00:06,585 - INFO - Found new order from メルカリShops (UID: 672)
+2026-01-13 15:00:06,798 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"596350676158644250","quoteToken":"rT4mJ80tCTp_zkhGwvKM4ctgWX--lZnjRTfnokWTrwNf-ECykQEAnBkJp_8q2ZbnT9ZOrRR2ZzltAgNqXe4Diq03nOQBPW9L3Nb4pTQ100XRD4LN8INB21M9qLAUszQFkSoJEQgMWdo_4RJe_PMx0A"}]}
+2026-01-13 15:00:06,798 - INFO - LINEに2件の注文を通知しました。メールを既読にします。
+2026-01-14 09:00:06,397 - INFO - Found new order from メルカリShops (UID: 674)
+2026-01-14 09:00:08,234 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"596459393659961557","quoteToken":"BpWQyNmSXRI0JEISS_aSjPVLQcKS2UDqQS0K3svtRrZdhWRcswt3aiwSJOQVRn0yMD0YfKy0vnL6Cn8EYuUZRbpyy-Ndt0GYKrxV6zIpfuHBKcUI3KMkG5MzDc-BoCy5ocSy3U0cNR4yY5VOgle3RA"}]}
+2026-01-14 09:00:08,301 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2026-01-15 09:00:05,994 - INFO - Found new order from メルカリShops (UID: 680)
+2026-01-15 09:00:28,087 - INFO - Found new order from ラクマ (UID: 727)
+2026-01-15 09:00:29,912 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"596604387007922656","quoteToken":"iVBTZX4GUhHjHFpwNBbEk3eScHfXomsS1CFn-t2BkaLLS9NCBA3lZ2Bt1c1tvoQq6l265JUBLuJh5RQkX7Ju1pGJvGgej7P5kI-eHffR9LAJAe_4SMFYs85Qh3q7c4t3Knu0YTfGlqQ-PW5C_QCutA"}]}
+2026-01-15 09:00:29,912 - INFO - LINEに2件の注文を通知しました。メールを既読にします。
+2026-01-16 09:00:05,527 - INFO - Found new order from メルカリShops (UID: 733)
+2026-01-16 09:00:59,151 - INFO - Found new order from メルカリShops (UID: 826)
+2026-01-16 09:00:59,490 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"596749392200335397","quoteToken":"_IpUAp4on4ECsL4w55-iaS0nPGx87XkfXDu6MqnEkEeZFWeq_qHEBDSZLkqr1tW0uKjGmnvTYykyMJLGT2g_HmsHG7sXL_LSkFnLyaojJB3P6tukkCf0TgaFHCG1oqPQ8FIOdlsEwfDIrGjBr6DsMg"}]}
+2026-01-16 09:00:59,492 - INFO - LINEに2件の注文を通知しました。メールを既読にします。
+2026-01-17 09:00:05,864 - INFO - Found new order from メルカリShops (UID: 827)
+2026-01-17 09:00:07,347 - INFO - Found new order from メルカリShops (UID: 830)
+2026-01-17 09:00:07,853 - INFO - Found new order from メルカリShops (UID: 831)
+2026-01-17 09:00:08,092 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"596894260541522112","quoteToken":"hpimRjAkJlJvWjBMk4hBS6fTA-ZAZsMrXLkIcchgZCuydi7NxkaSuAEpB8TeSEd3oCSuyw1TVTZuXbo-h_5b1zGbVkHatHjle3SeukNVmWisqSJVO-83PehxFVY8smnWyF8sYvEAcSgj1s3gMRzT0w"}]}
+2026-01-17 09:00:08,092 - INFO - LINEに3件の注文を通知しました。メールを既読にします。
+2026-01-17 12:00:05,241 - INFO - Found new order from メルカリShops (UID: 832)
+2026-01-17 12:00:05,472 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"596912375353835851","quoteToken":"E3jjnkygaKnvI72W5ETnZ06pI3-3o8thN6Yj1dOBrgUI4l4yADXR1oukRaRtz0njLLn4xq2l-swiiTyNl9jlu9zUX_p21-1GBkNIRzZ5G_ssRrEwRU7WbeC0P2qdn3Ump87NbMpoG-yp2og0zllQzg"}]}
+2026-01-17 12:00:05,474 - INFO - LINEに1件の注文を通知しました。メールを既読にします。
+2026-01-18 09:00:05,855 - INFO - Found new order from メルカリShops (UID: 834)
+2026-01-18 09:00:06,343 - INFO - Found new order from メルカリShops (UID: 835)
+2026-01-18 09:00:06,823 - INFO - Found new order from メルカリShops (UID: 836)
+2026-01-18 09:00:07,016 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"597039213858783466","quoteToken":"Yw163pnVpx-gNUhV1XHLUbil5rAHppaLORdtyOaNkg4NHP-mHrdaxwuOZLQlU18pgwJoCGRvxpeKHmvazYRlnaryOnetTuD1qXqzyK16Ts7MtXdnWb24wTybn13VCbArx063lxVtg2xdRw23-c5uHg"}]}
+2026-01-18 09:00:07,016 - INFO - LINEに3件の注文を通知しました。メールを既読にします。
+2026-01-19 09:00:05,246 - INFO - Found new order from メルカリShops (UID: 838)
+2026-01-19 09:00:05,644 - INFO - Found new order from メルカリShops (UID: 839)
+2026-01-19 09:00:06,345 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"597184167914766511","quoteToken":"tmANiE0nEFJYL0HFOc1-omf8o0LANRK6P7XXJCQv5wBKCWzL8zL5Xtx1-TlxqqRv32Pw-NjWXRJ-5pV7rXkkJZe5yQ34c2weATVc4i5Nly4i2jN5ze8wDzBtI_E93l_fdAJjE18Dj6jA1EPB723eCA"}]}
+2026-01-19 09:00:06,345 - INFO - LINEに2件の注文を通知しました。メールを既読にします。
+2026-01-19 15:00:05,057 - INFO - Found new order from メルカリShops (UID: 841)
+2026-01-19 15:00:06,808 - INFO - LINE API Response: Status 200, Body: {"sentMessages":[{"id":"597220407237411354","quoteToken":"PTkARrIbVwfGDWhX7nHLK97kj4kQ567LYlOfEishbp-Hs1rZX3dK3ts6F-Wqanlze248rDHwu-d7Jf0cAjiFT9eOQjpB3ZBfplb1baPJYo5aL_HDGFVYXf-O3mZmX1932hGVCqxvu0xrRsMpBi58Sw"}]}
+2026-01-19 15:00:06,808 - INFO - LINEに1件の注文を通知しました。メールを既読にします。

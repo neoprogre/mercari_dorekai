@@ -1,0 +1,44 @@
+# CSV / データ
+*.csv
+*.tsv
+*.xlsx
+*.xls
+
+# 圧縮
+*.zip
+*.7z
+*.rar
+
+# 動画
+*.mp4
+*.mov
+*.avi
+*.mkv
+
+# 画像
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.webp
+
+# 実行ファイル
+# *.exe
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# 環境変数
+.env
+
+# logs / build
+*.log
+dist/
+build/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
