@@ -2,9 +2,9 @@ name: Daily Auto Run
 
 on:
   schedule:
-    # 毎日 19:00 JST (10:00 UTC)
+    # Daily at 19:00 JST (10:00 UTC)
     - cron: '0 10 * * *'
-  workflow_dispatch: # 手動実行も可能にする
+  workflow_dispatch: # Manual trigger enabled
 
 jobs:
   run-allrun2:
