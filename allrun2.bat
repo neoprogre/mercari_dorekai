@@ -57,6 +57,20 @@ if %errorlevel% neq 0 (
     goto :error_exit
 )
 
+echo.
+echo [5/6] ラクマ新規出品...
+call 5_rakuma_new_items.bat
+if %errorlevel% neq 0 (
+    echo   ⚠️ 警告: エラーが発生しましたが続行します
+)
+
+echo.
+echo [6/6] ヤフオク出品（スキップ可）...
+call 6_yahoo_auction_post.bat
+if %errorlevel% neq 0 (
+    echo   ⚠️ 警告: ヤフオク出品でエラーが発生しました（想定内）
+)
+
 :success_exit
 echo.
 echo ========================================
