@@ -42,3 +42,9 @@ build/
 .DS_Store
 Thumbs.db
 .vscode/
+
+# Browser profiles / caches
+rakuma_user_data/
+yahoo_user_data/
+**/Cache/
+**/Cache_Data/
