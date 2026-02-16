@@ -1,0 +1,14 @@
+10
+
+https://www.googletagmanager.com/static/service_worker
+https://www.googletagmanager.com/static/service_worker/6240/sw.js?origin=https%3A%2F%2Ffril.jp
+false
+{cd63e6a1-bb8f-4e5c-a199-14f078982266}
+1
+1770969200922945
+1770969200930364
+1770969200717436
+0
+true
+0
+#
