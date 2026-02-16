@@ -1,3 +1,3 @@
 @echo off
-py -3.14 yahooku_scraper.py
+..\.venv\Scripts\python.exe yahooku_scraper.py
 pause

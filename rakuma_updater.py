@@ -1,5 +1,6 @@
 import os
 import glob
+import shutil
 
 # ==============================================================================
 #
@@ -14,11 +15,21 @@ from playwright.sync_api import sync_playwright, TimeoutError
 import re
 
 # --- 設定 ---
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 IMAGE_DIR = r"\\LS210DNBD82\share\平良\Python\mercari_dorekai\mercari_images"
 RAKUMA_LOGIN_URL = "https://fril.jp/login"
-USER_DATA_DIR = "rakuma_user_data_firefox"
-PRODUCTS_FILE = "products_rakuma.csv" # スクレイパーが生成したファイル
-PROCESSED_LOG = "rakuma_update_processed_ids.txt" # このスクリプト専用の処理済みログ
+USER_DATA_DIR = os.path.join(SCRIPT_DIR, "rakuma_user_data_firefox")
+PRODUCTS_FILE = os.path.join(SCRIPT_DIR, "products_rakuma.csv") # スクレイパーが生成したファイル
+PROCESSED_LOG = os.path.join(SCRIPT_DIR, "rakuma_update_processed_ids.txt") # このスクリプト専用の処理済みログ
+
+# キャッシュディレクトリを削除
+cache_dir = os.path.join(USER_DATA_DIR, "cache2")
+if os.path.exists(cache_dir):
+    try:
+        shutil.rmtree(cache_dir)
+        print(f"🗑️ キャッシュを削除: {cache_dir}")
+    except Exception as e:
+        print(f"⚠️ キャッシュ削除エラー: {e}")
 
 # 実行オプション: Trueにすると最初からやり直す
 #RESTART_FROM_START = False
@@ -57,7 +68,7 @@ def get_latest_product_data_csv(path):
 def load_descriptions_from_master():
     """マスターCSVから品番と商品説明のマップを作成する"""
     descriptions = {}
-    master_csv_path = get_latest_product_data_csv(r"\\LS210DNBD82\share\平良\Python\mercari_dorekai")
+    master_csv_path = get_latest_product_data_csv(os.path.join(SCRIPT_DIR, "downloads"))
     if not master_csv_path:
         log("⚠️ マスターデータ(product_data_*.csv)が見つかりません。商品説明は更新されません。")
         return descriptions
@@ -76,6 +87,96 @@ def get_product_id_from_url(url):
     if not url or "item.fril.jp" not in url:
         return None
     return url.split('/')[-1].split('?')[0]
+
+def load_brand_map(path):
+    """ブランドマスターから品番→ブランド名のマップを作成する"""
+    m = {}
+    try:
+        with open(path, "r", encoding="cp932", errors="replace") as f:
+            r = csv.reader(f)
+            for row in r:
+                if len(row) >= 2:
+                    bid = row[0].strip()
+                    name = row[1].strip() or (row[-1].strip() if row[-1:] else "")
+                    if bid:
+                        m[bid] = name
+    except Exception as e:
+        log(f"⚠️ ブランドマスタの読み込みに失敗しました: {path} - {e}")
+    return m
+
+def safe_click(locator, timeout=10000):
+    """安全なクリック操作（フォールバック機能付き）"""
+    try:
+        locator.scroll_into_view_if_needed(timeout=2000)
+    except Exception:
+        pass
+    try:
+        locator.click(timeout=timeout)
+        return True
+    except Exception as e:
+        log(f"⚠️ direct click 失敗、evaluate フォールバック試行: {e}")
+        try:
+            locator.evaluate("el => el.click()")
+            return True
+        except Exception as e2:
+            log(f"⚠️ evaluate click も失敗: {e2}")
+            return False
+
+def set_shipping_method(page):
+    """配送方法を「かんたんラクマパック(日本郵便)」に固定設定する"""
+    try:
+        ship_text = "かんたんラクマパック(日本郵便)"
+        log(f"🚚 配送方法を「{ship_text}」に設定します...")
+        
+        # 1. 配送方法のボタンをクリックしてモーダルを開く
+        # ページ構造の変更に備え、複数のセレクタを試す
+        shipping_button = page.locator('button:has-text("配送方法")').first
+        if shipping_button.count() == 0:
+            shipping_button = page.locator('div:has-text("配送方法") + button').first
+        if shipping_button.count() == 0:
+            shipping_button = page.locator('div.css-67lmaz:has-text("配送方法")').locator('..').locator('button').first
+        
+        if shipping_button.count() == 0:
+            log("❌ 配送方法ボタンが見つかりません")
+            return False
+        
+        safe_click(shipping_button)
+        
+        # 2. モーダルが表示されるのを待つ
+        try:
+            page.wait_for_selector('section[role="dialog"]', timeout=5000)
+        except:
+            log("⚠️ モーダルの表示待機がタイムアウト。続行します...")
+        
+        log("    モーダルを開きました。")
+        
+        # 3. モーダル内で「かんたんラクマパック(日本郵便)」を選択
+        option_found = False
+        try:
+            jp_post_option = page.locator('section[role="dialog"] img[alt*="日本郵便"], section[role="dialog"] div:has-text("日本郵便")').first
+            if jp_post_option.count() > 0:
+                jp_post_option.locator('xpath=./ancestor-or-self::div[contains(@class, "css-")]').first.click()
+                log("    「かんたんラクマパック(日本郵便)」のオプションを選択しました。")
+                option_found = True
+        except Exception as e:
+            log(f"⚠️ 日本郵便オプション選択エラー: {e}")
+        
+        if not option_found:
+            log("⚠️ モーダル内で日本郵便のオプションが見つかりませんでした")
+            return False
+
+        # 4. モーダルが閉じるのを待つ
+        try:
+            page.wait_for_selector('section[role="dialog"]', state='hidden', timeout=5000)
+        except:
+            log("⚠️ モーダルクローズ待機がタイムアウト。続行します...")
+        
+        log(f"✅ 配送方法を固定設定しました: {ship_text}")
+        return True
+
+    except Exception as e:
+        log(f"⚠️ 配送方法の固定設定に失敗しました: {e}")
+        return False
 
 # --- メイン処理 ---
 def update_products():
@@ -102,6 +203,14 @@ def update_products():
 
     # 商品説明をマスターから読み込む
     description_map = load_descriptions_from_master()
+    
+    # ブランドマスターから品番→ブランド名マップを作成
+    brand_map_path = os.path.join(SCRIPT_DIR, "brand_master_sjis.csv")
+    brand_map = load_brand_map(brand_map_path) if os.path.exists(brand_map_path) else {}
+    if brand_map:
+        log(f"📚 ブランドマスター：{len(brand_map)}件読み込み")
+    else:
+        log(f"⚠️ ブランドマスターが利用できません（{brand_map_path}）")
 
     processed_ids = load_processed_ids()
     if RESTART_FROM_START and os.path.exists(PROCESSED_LOG):
@@ -112,10 +221,10 @@ def update_products():
 
     with sync_playwright() as p:
         try:
-            context = p.firefox.launch_persistent_context(
+            context = p.chromium.launch_persistent_context(
                 USER_DATA_DIR,
                 headless=False, # Falseでブラウザの動きが見える
-                user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:121.0) Gecko/20100101 Firefox/121.0'
+                args=["--disable-gpu", "--disable-software-rasterizer"]
             )
         except Exception as e:
             log(f"❌ ブラウザの起動に失敗しました。多重起動していないか確認してください。: {e}")
@@ -145,7 +254,7 @@ def update_products():
         for i, product in enumerate(products_to_update):
             product_id = get_product_id_from_url(product['URL'])
             if not product_id:
-                log(f"⚠️ 無効なURLです、スキップします: {product_url}")
+                log(f"⚠️ 無効なURLです、スキップします: {product.get('URL')}")
                 continue
 
             if product_id in processed_ids:
@@ -267,23 +376,7 @@ def update_products():
                 price_input.fill(product['価格'])
 
                 # --- 配送方法を「かんたんラクマパック(日本郵便)」に固定 ---
-                try:
-                    log("🚚 配送方法を「かんたんラクマパック(日本郵便)」に設定します...")
-                    # 配送方法ボタンのセレクタをより具体的にする
-                    shipping_button = page.locator('div.css-67lmaz:has-text("配送方法")').locator('..').locator('button')
-                    shipping_button.click()
-                    page.wait_for_selector('section[role="dialog"]', timeout=5000)
-                    log("    モーダルを開きました。")
-                    
-                    page.locator('section[role="dialog"] div:has-text("日本郵便")').first.click()
-                    log("    「日本郵便」を選択しました。")
-
-                    # 「決定」ボタンは存在しない場合があるため、モーダルが閉じるのを待つ
-                    page.wait_for_selector('section[role="dialog"]', state='hidden', timeout=5000)
-                    log("    モーダルが閉じられました。配送方法を設定しました。")
-
-                except Exception as e:
-                    log(f"⚠️ 配送方法の設定に失敗しました: {e}")
+                set_shipping_method(page)
 
                 # --- 発送日の目安 を "支払い後、4～7日で発送" に設定 ---
                 try:
@@ -324,11 +417,11 @@ def update_products():
             except TimeoutError as e:
                 log(f"❌ タイムアウトエラーが発生しました: {product_id} - {e}")
                 log("    ページの読み込みが遅いか、UIが変更された可能性があります。")
-                save_processed_id(product_id) # エラーでも次回スキップ
+                save_processed_id(product_id) # エラーが発生しても次回はスキップするように記録
             except Exception as e:
                 log(f"❌ 不明なエラーが発生しました: {product_id} - {e}")
                 # エラー発生時も、次回からスキップするためにIDを保存するかどうかは要検討
-                save_processed_id(product_id) # エラーでも次回スキップ
+                save_processed_id(product_id) # エラーが発生しても次回はスキップするように記録
 
             # レート制限対策
             time.sleep(random.uniform(2.0, 5.0))

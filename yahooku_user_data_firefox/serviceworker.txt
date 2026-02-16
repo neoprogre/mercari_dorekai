@@ -1,0 +1,14 @@
+10
+
+https://www.googletagmanager.com/static/service_worker
+https://www.googletagmanager.com/static/service_worker/6240/sw.js?origin=https%3A%2F%2Fauctions.yahoo.co.jp
+false
+{b79c9445-9772-47d2-895b-6b79009e6376}
+1
+1770978515117022
+1770978515123324
+1770978514298715
+0
+true
+0
+#

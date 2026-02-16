@@ -4,6 +4,7 @@ import time
 import sys
 import re
 import pandas as pd
+import logging
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
@@ -27,10 +28,27 @@ OUTPUT_CSV = os.path.join(os.path.dirname(os.path.abspath(__file__)), "products_
 PROCESSED_RELIST_LOG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "processed_relist_ids.txt")
 # アクティブな出品数の上限
 MAX_ACTIVE_ITEMS = 100
+# 待機設定（秒）
+PAGE_LOAD_TIMEOUT = 20
+SCROLL_PAUSE = 1.0
+DETAIL_WAIT = 0.8
+RELIST_WAIT = 3.0
 
-def log(msg):
+logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s", datefmt="%H:%M:%S")
+
+def log(msg, level="info"):
     """タイムスタンプ付きでログを出力する"""
-    print(f"[{time.strftime('%H:%M:%S')}] {msg}")
+    getattr(logging, level)(msg)
+
+def wait_for_items(driver):
+    """商品リストのコンテナが表示されるまで待機"""
+    try:
+        WebDriverWait(driver, PAGE_LOAD_TIMEOUT).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "#itm ul > li"))
+        )
+        return True
+    except TimeoutException:
+        return False
 
 def get_management_info(driver, url):
     """商品詳細ページ（管理画面）からアクセス数・ウォッチ数・入札数を取得"""
@@ -44,7 +62,9 @@ def get_management_info(driver, url):
         # 新しいタブを開く
         driver.switch_to.new_window('tab')
         driver.get(url)
-        time.sleep(1.5) # ページ読み込み待ち
+        WebDriverWait(driver, PAGE_LOAD_TIMEOUT).until(
+            EC.presence_of_element_located((By.ID, "management"))
+        )
 
         # 管理セクション (id="management") 内の情報を取得
         # アクセス数
@@ -159,7 +179,7 @@ def scrape_page_items(driver, status_label):
             log(f"  🔍 詳細情報を取得中: {item['title'][:20]}...")
             mgmt_info = get_management_info(driver, item['url'])
             item.update(mgmt_info)
-            time.sleep(1) # 負荷軽減
+            time.sleep(DETAIL_WAIT) # 負荷軽減
 
     except Exception as e:
         log(f"❌ ページ解析中にエラー: {e}")
@@ -174,7 +194,8 @@ def scrape_url(driver, start_url, status_label):
     while True:
         log(f"ページ移動: {current_url}")
         driver.get(current_url)
-        time.sleep(3) # 読み込み待機
+        if not wait_for_items(driver):
+            log("⚠️ 商品リストの読み込み待機がタイムアウトしました。", level="warning")
 
         # --- ログイン処理 ---
         if "login.yahoo.co.jp" in driver.current_url:
@@ -186,9 +207,9 @@ def scrape_url(driver, start_url, status_label):
 
         # スクロールして読み込み
         last_height = driver.execute_script("return document.body.scrollHeight")
-        while True:
+        for _ in range(10):
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            time.sleep(2)
+            time.sleep(SCROLL_PAUSE)
             new_height = driver.execute_script("return document.body.scrollHeight")
             if new_height == last_height:
                 break
@@ -240,7 +261,7 @@ def relist_item(driver, auction_id):
     relist_url = f"https://auctions.yahoo.co.jp/sell/jp/show/resubmit?aID={auction_id}"
     log(f"  再出品ページに移動: {relist_url}")
     driver.get(relist_url)
-    time.sleep(4) # ページ読み込みとJSの実行を待つ
+    time.sleep(RELIST_WAIT) # ページ読み込みとJSの実行を待つ
 
     try:
         # ページが完全に読み込まれるまで待機

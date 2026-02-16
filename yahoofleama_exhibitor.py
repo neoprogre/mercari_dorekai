@@ -6,6 +6,7 @@ import logging
 import pyautogui
 import pyperclip
 import sys
+import requests
 
 # --- ログ設定 ---
 logging.basicConfig(
@@ -209,6 +210,40 @@ def scroll_down(clicks=5):
     pyautogui.scroll(-100 * clicks) # マイナス値で下にスクロール
     time.sleep(1)
 
+def check_images_existence():
+    """
+    必要な画像ファイルが存在するか確認する
+    """
+    # 必須画像のリスト
+    required_images = [
+        IMG_SELECT_IMAGES, IMG_IMAGE_SELECT_DONE, IMG_CATEGORY_SELECT, 
+        IMG_CATEGORY_LADIES, IMG_CATEGORY_DRESS, IMG_CATEGORY_MINI_DRESS, 
+        IMG_CATEGORY_CONFIRM, IMG_SHIPPING_METHOD, IMG_SHIPPING_YAMATO, 
+        IMG_SHIPPING_CONFIRM, IMG_PUBLISH_BUTTON, IMG_PUBLISH_CONFIRM_BUTTON, 
+        IMG_PUBLISH_COMPLETE
+    ]
+    # 出品ボタンはどちらかがあればOK
+    exhibit_buttons = [IMG_EXHIBIT_BUTTON1, IMG_EXHIBIT_BUTTON2]
+    
+    missing = []
+    
+    if not any(os.path.exists(os.path.join(YAHOO_IMAGES_DIR, img)) for img in exhibit_buttons):
+        missing.append(f"出品ボタン ({' または '.join(exhibit_buttons)})")
+        
+    for img_name in required_images:
+        path = os.path.join(YAHOO_IMAGES_DIR, img_name)
+        if not os.path.exists(path):
+            missing.append(img_name)
+            
+    if missing:
+        log("❌ 以下の画像ファイルが 'images' フォルダに見つかりません。")
+        log("   BlueStacksの画面をキャプチャし、ボタン部分を切り取って保存してください。")
+        for m in missing:
+            log(f"   - {m}")
+        log(f"   保存先: {YAHOO_IMAGES_DIR}")
+        return False
+    return True
+
 # --- 出品ステップごとの関数 ---
 
 def step_select_images(image_paths_on_host):
@@ -331,6 +366,11 @@ def get_column_indices(header):
 def main():
     log("=== Yahoo!フリマ出品処理を開始します ===")
     
+    # 画像チェック
+    if not check_images_existence():
+        log("❌ 必要な画像が不足しているため、処理を中止します。")
+        return
+
     # [TODO] BlueStacksのウィンドウを前面に表示し、操作可能な状態にしてください。
     log("3秒後に処理を開始します。BlueStacksをアクティブにしてください...")
     time.sleep(3)
@@ -338,10 +378,16 @@ def main():
     # --- 出品対象の商品を決定するロジック (rakuma_exhibitor.pyから流用) ---
     # (この部分はPC上のファイルで完結するため、そのまま使えます)
     
+    # スクリプトのディレクトリを取得して絶対パスを生成
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    products_yahoofleama_path = os.path.join(script_dir, "products_yahoofleama.csv")
+    products_mercari_path = os.path.join(script_dir, "products_mercari.csv")
+    mercari_profile_csv_path = os.path.join(script_dir, "mercari_profile_products.csv")
+
     # 1. Yahooフリマに出品済みの品番を読み込む
     yahoofleama_hinban_set = set()
     try:
-        with open("products_yahoofleama.csv", "r", encoding="utf-8-sig", errors="replace") as f:
+        with open(products_yahoofleama_path, "r", encoding="utf-8-sig", errors="replace") as f:
             reader = csv.reader(f)
             header = next(reader)
             hinban_idx = header.index('品番')
@@ -350,19 +396,31 @@ def main():
                     yahoofleama_hinban_set.add(row[hinban_idx])
         log(f"📚 Yahooフリマ商品 {len(yahoofleama_hinban_set)} 件の品番を読み込みました。")
     except FileNotFoundError:
-        log("⚠️ products_yahoofleama.csv が見つかりません。初回出品として処理を続行します。")
+        log(f"⚠️ {products_yahoofleama_path} が見つかりません。初回出品として処理を続行します。")
     except Exception as e:
-        log(f"⚠️ products_yahoofleama.csv 読み込みエラー: {e}")
+        log(f"⚠️ {products_yahoofleama_path} 読み込みエラー: {e}")
 
     # 2. メルカリCSVから、ステータスが2で、かつYahooフリマに存在しない商品のIDを抽出
     target_product_ids = set()
+    use_profile_data = False
     try:
-        with open("products_mercari.csv", "r", encoding="utf-8-sig", errors="replace") as f:
+        with open(products_mercari_path, "r", encoding="utf-8-sig", errors="replace") as f:
             reader = csv.reader(f)
-            header = next(reader)
-            hinban_idx = header.index('品番')
-            status_idx = header.index('商品ステータス')
-            url_idx = header.index('URL')
+            try:
+                header = next(reader)
+            except StopIteration:
+                log(f"❌ {products_mercari_path} は空です。")
+                header = [] # 空リストにして後続のエラー処理へ
+
+            try:
+                hinban_idx = header.index('品番')
+                status_idx = header.index('商品ステータス')
+                url_idx = header.index('URL')
+            except ValueError as e:
+                log(f"⚠️ {products_mercari_path} のヘッダー読み込みに失敗しました（フォールバックを試みます）: {e}")
+                # log(f"   検出されたヘッダー: {header}")
+                # return # ここで終了せず、フォールバック処理へ進む
+
             for row in reader:
                 if len(row) > max(hinban_idx, status_idx, url_idx):
                     hinban = row[hinban_idx]
@@ -374,46 +432,78 @@ def main():
                             target_product_ids.add(product_id)
         log(f"🔍 抽出条件: {len(target_product_ids)} 件のメルカリ商品を対象とします。")
     except Exception as e:
-        log(f"❌ products_mercari.csv 処理エラー: {e}")
-        return
+        log(f"⚠️ {products_mercari_path} 処理エラー: {e}")
+        # return # エラーでもフォールバックを試みる
 
     if not target_product_ids:
-        log("✅ アップロード対象の商品はありませんでした。")
-        return
+        if os.path.exists(mercari_profile_csv_path):
+            log(f"⚠️ products_mercari.csv から対象を取得できませんでした。{mercari_profile_csv_path} を使用します。")
+            use_profile_data = True
+        else:
+            log("✅ アップロード対象の商品はありませんでした。")
+            return
 
-    # 3. 詳細情報を持つマスターCSVファイルを探して読み込む
-    network_dir = r"\\LS210DNBD82\share\平良\Python\mercari_dorekai"
-    csv_pattern = os.path.join(network_dir, "product_data_*.csv")
-    latest_csv = max(glob.glob(csv_pattern), key=os.path.getmtime, default=None)
-    if not latest_csv:
-        log(f"❌ 詳細データCSVが見つかりません: {csv_pattern}")
-        return
-    log(f"📂 最新の詳細データCSVを読み込み: {latest_csv}")
-
-    # 4. マスターCSVから対象商品IDの行だけを抽出
     products_to_process = []
-    try:
-        with open(latest_csv, "r", encoding="cp932", errors="replace") as f:
-            reader = csv.reader(f)
-            header = next(reader)
-            indices = get_column_indices(header)
-            product_id_idx = indices.get('商品ID')
-            if product_id_idx is None: return
 
-            for row in reader:
-                if len(row) > product_id_idx and row[product_id_idx] in target_product_ids:
-                    product_data = {
-                        'id': row[indices['商品ID']],
-                        'name': row[indices['商品名']],
-                        'description': row[indices['商品説明']],
-                        'price': row[indices['販売価格']],
-                        'condition': row[indices['商品の状態']],
-                    }
-                    products_to_process.append(product_data)
-        log(f"📤 最終的なアップロード対象: {len(products_to_process)} 件")
-    except Exception as e:
-        log(f"❌ 詳細データCSVの読み込み/フィルタリングエラー: {e}")
-        return
+    if use_profile_data:
+        # プロフィールCSVからデータを読み込む
+        try:
+            with open(mercari_profile_csv_path, "r", encoding="utf-8-sig", errors="replace") as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    # 重複チェック
+                    if row.get('品番') in yahoofleama_hinban_set:
+                        continue
+                    
+                    # 状態のマッピング
+                    cond_map = {'新品、未使用': '1', '未使用に近い': '2', '目立った傷や汚れなし': '3', 'やや傷や汚れあり': '4', '傷や汚れあり': '5', '全体的に状態が悪い': '6'}
+                    cond_val = cond_map.get(row.get('状態'), '4')
+
+                    products_to_process.append({
+                        'id': row.get('商品ID') or row.get('品番'),
+                        'name': row.get('商品名'),
+                        'description': row.get('商品説明'),
+                        'price': row.get('価格'),
+                        'condition': cond_val,
+                        'image_urls': row.get('画像URL', '')
+                    })
+            log(f"📤 プロフィールCSVから {len(products_to_process)} 件をロードしました。")
+        except Exception as e:
+            log(f"❌ プロフィールCSV読み込みエラー: {e}")
+            return
+    else:
+        # 3. 詳細情報を持つマスターCSVファイルを探して読み込む
+        network_dir = r"\\LS210DNBD82\share\平良\Python\mercari_dorekai"
+        csv_pattern = os.path.join(network_dir, "product_data_*.csv")
+        latest_csv = max(glob.glob(csv_pattern), key=os.path.getmtime, default=None)
+        if not latest_csv:
+            log(f"❌ 詳細データCSVが見つかりません: {csv_pattern}")
+            return
+        log(f"📂 最新の詳細データCSVを読み込み: {latest_csv}")
+
+        # 4. マスターCSVから対象商品IDの行だけを抽出
+        try:
+            with open(latest_csv, "r", encoding="cp932", errors="replace") as f:
+                reader = csv.reader(f)
+                header = next(reader)
+                indices = get_column_indices(header)
+                product_id_idx = indices.get('商品ID')
+                if product_id_idx is None: return
+
+                for row in reader:
+                    if len(row) > product_id_idx and row[product_id_idx] in target_product_ids:
+                        product_data = {
+                            'id': row[indices['商品ID']],
+                            'name': row[indices['商品名']],
+                            'description': row[indices['商品説明']],
+                            'price': row[indices['販売価格']],
+                            'condition': row[indices['商品の状態']],
+                        }
+                        products_to_process.append(product_data)
+            log(f"📤 最終的なアップロード対象: {len(products_to_process)} 件")
+        except Exception as e:
+            log(f"❌ 詳細データCSVの読み込み/フィルタリングエラー: {e}")
+            return
 
     # --- 1件ずつ出品処理 ---
     for i, product in enumerate(products_to_process):
@@ -428,6 +518,28 @@ def main():
             # 2. 画像を選択
             image_dir_on_host = r"\\LS210DNBD82\share\平良\Python\mercari_dorekai\mercari_images"
             image_paths = sorted(glob.glob(os.path.join(image_dir_on_host, f"{product['id']}-*.jpg")))
+            
+            # 画像がない場合、URLがあればダウンロードを試みる
+            if not image_paths and product.get('image_urls'):
+                log("   画像をダウンロードします...")
+                img_urls = product['image_urls'].split(',')
+                local_img_dir = os.path.join(script_dir, "downloaded_images")
+                os.makedirs(local_img_dir, exist_ok=True)
+                downloaded_paths = []
+                for idx, url in enumerate(img_urls):
+                    if not url.strip(): continue
+                    try:
+                        url = url.split('?')[0]
+                        ext = ".png" if ".png" in url else ".jpg"
+                        save_path = os.path.join(local_img_dir, f"{product['id']}-{idx+1}{ext}")
+                        if not os.path.exists(save_path):
+                            r = requests.get(url, timeout=10)
+                            if r.status_code == 200:
+                                with open(save_path, 'wb') as f: f.write(r.content)
+                        if os.path.exists(save_path): downloaded_paths.append(save_path)
+                    except Exception as e: log(f"   画像DL失敗: {e}")
+                if downloaded_paths: image_paths = downloaded_paths
+
             if not image_paths:
                 log("⚠️ 商品画像が見つかりません。この商品をスキップします。")
                 continue
@@ -480,4 +592,3 @@ if __name__ == "__main__":
         log(f"💥 予期せぬ致命的なエラーが発生しました: {e}")
         pyautogui.screenshot(os.path.join("error_artifacts", "critical_error_screen.png"))
         sys.exit(1)
-

@@ -503,9 +503,77 @@ def list_item_on_yahoo_auction(driver, item_data):
                 except Exception:
                     print("   ⚠️ 自動選択後のカテゴリ確認に失敗しました。")
             else:
-                print("   ⚠️ 自動選択に失敗しました。手動でカテゴリを選択してください。")
-                # input("   カテゴリ選択完了後、Enterキーを押してください: ")
-                print("   ⚠️ 自動処理のため、手動入力をスキップして続行します。")
+                print("   ⚠️ 自動選択に失敗しました。履歴から選択を試みます...")
+                
+                # 「履歴から選択する」タブに切り替え
+                tab_clicked = False
+                try:
+                    # data-cl_cl_index="168" のタブをクリック
+                    history_tab = driver.find_element(By.XPATH, "//li[@class='Tab__item js-tab-item']//a[@data-cl_cl_index='168']")
+                    history_tab.click()
+                    print("   ✅ 履歴タブに切り替えました（data-cl_cl_index=168）")
+                    tab_clicked = True
+                    time.sleep(1.5)
+                except Exception:
+                    try:
+                        # フォールバック: テキストから検索
+                        history_tab = driver.find_element(By.XPATH, "//li[@class='Tab__item js-tab-item']//div[text()='履歴から選択する']/..")
+                        history_tab.click()
+                        print("   ✅ 履歴タブに切り替えました（テキストマッチ）")
+                        tab_clicked = True
+                        time.sleep(1.5)
+                    except Exception as e:
+                        print(f"   ⚠️ タブ切り替え失敗: {e}")
+                
+                if not tab_clicked:
+                    print("   ⚠️ タブを切り替えられませんでした。処理を続行します...")
+                    time.sleep(0.5)
+                
+                # 履歴から最初のラジオボタンをクリック
+                radio_clicked = False
+                try:
+                    # history_category_pages 内の最初のラジオボタン
+                    first_radio = driver.find_element(By.CSS_SELECTOR, "#history_category_pages input[name='category'][type='radio']")
+                    driver.execute_script("arguments[0].scrollIntoView(true);", first_radio)
+                    time.sleep(0.3)
+                    first_radio.click()
+                    print(f"   ✅ 履歴カテゴリをチェックしました")
+                    radio_clicked = True
+                    time.sleep(0.5)
+                except Exception as e:
+                    print(f"   ⚠️ ラジオボタン選択失敗: {e}")
+                    try:
+                        # フォールバック: 全ページから検索
+                        history_radios = driver.find_elements(By.CSS_SELECTOR, "input[name='category'][type='radio']")
+                        if history_radios:
+                            driver.execute_script("arguments[0].scrollIntoView(true);", history_radios[0])
+                            time.sleep(0.3)
+                            history_radios[0].click()
+                            print(f"   ✅ (フォールバック) ラジオボタンをチェックしました")
+                            radio_clicked = True
+                            time.sleep(0.5)
+                    except Exception as e2:
+                        print(f"   ⚠️ ラジオボタンフォールバック失敗: {e2}")
+                
+                # 「このカテゴリに出品」ボタンをクリック
+                if radio_clicked:
+                    try:
+                        submit_btn = driver.find_element(By.ID, "history_category_submit")
+                        driver.execute_script("arguments[0].scrollIntoView(true);", submit_btn)
+                        time.sleep(0.5)
+                        # ボタンが有効になるまで待機
+                        if submit_btn.get_attribute("disabled"):
+                            print("   ℹ️ ボタンが無効状態です。有効になるまで待機...")
+                            time.sleep(1)
+                        submit_btn.click()
+                        print(f"   ✅ 「このカテゴリに出品」をクリックしました")
+                        time.sleep(3)
+                    except Exception as e:
+                        print(f"   ⚠️ 確定ボタンクリック失敗: {e}")
+                else:
+                    print("   ⚠️ ラジオボタンをチェックできなかったため、ボタンクリックをスキップします")
+                
+                # カテゴリ確認
                 try:
                     category_text_elem = driver.find_element(By.CSS_SELECTOR, ".Category__text")
                     current_category_text = category_text_elem.text.strip()
@@ -576,8 +644,8 @@ def list_item_on_yahoo_auction(driver, item_data):
         
         time.sleep(2)  # ページが安定するまで待機
         
-        # 新しい WebDriverWait インスタンスを作成（タイムアウト長め）
-        wait_form = WebDriverWait(driver, 30)
+        # 新しい WebDriverWait インスタンスを作成（画像入力は短め）
+        wait_form = WebDriverWait(driver, 15)
         # ページ上のオーバーレイがあれば対処しておく
         try:
             ensure_no_overlay(driver)
@@ -591,9 +659,9 @@ def list_item_on_yahoo_auction(driver, item_data):
             try:
                 file_input = None
                 
-                # 戦略1: ID で探す
+                # 戦略1: ID で探す（短いタイムアウト5秒）
                 try:
-                    file_input = wait_form.until(EC.presence_of_element_located((By.ID, "selectFileMultiple")))
+                    file_input = WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.ID, "selectFileMultiple")))
                     print(f"   ✅ 画像入力フィールドを見つけました (ID=selectFileMultiple)")
                 except Exception:
                     # 戦略2: 最初の input[type=file]

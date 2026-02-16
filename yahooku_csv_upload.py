@@ -13,7 +13,7 @@ except Exception as e:
     sys.exit(1)
 
 # CSVファイルパス
-csv_path = r"\\LS210DNBD82\share\平良\Python\mercari_dorekai\product_data_2026-01-05.csv"
+csv_path = r"C:\Users\progr\Desktop\Python\mercari_dorekai\downloads\product_data_2026-01-05.csv"
 
 print("\n" + "="*60)
 print("【CSVからヤフオク自動出品】")
