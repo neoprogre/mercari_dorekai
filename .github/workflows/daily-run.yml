@@ -1,6 +1,8 @@
 name: Daily Auto Run
 
 on:
+  push:
+    branches: [main]
   schedule:
     # Daily at 19:00 JST (10:00 UTC)
     - cron: '0 10 * * *'
