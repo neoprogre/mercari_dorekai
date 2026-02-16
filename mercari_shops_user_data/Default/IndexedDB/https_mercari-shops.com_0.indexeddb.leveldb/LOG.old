@@ -1,0 +1,7 @@
+2026/02/12-18:10:36.704 6840 Reusing MANIFEST c:\Users\progr\Desktop\Python\mercari_dorekai\mercari_shops_user_data\Default\IndexedDB\https_mercari-shops.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/02/12-18:10:36.705 6840 Recovering log #55
+2026/02/12-18:10:36.706 6840 Reusing old log c:\Users\progr\Desktop\Python\mercari_dorekai\mercari_shops_user_data\Default\IndexedDB\https_mercari-shops.com_0.indexeddb.leveldb/000055.log 
+2026/02/12-18:10:37.162 55a8 Level-0 table #61: started
+2026/02/12-18:10:37.188 55a8 Level-0 table #61: 1292 bytes OK
+2026/02/12-18:10:37.192 55a8 Delete type=0 #55
+2026/02/12-18:10:37.193 6840 Manual compaction at level-0 from '\x00\x14\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x15\x00\x00\x00' @ 0 : 0; will stop at (end)

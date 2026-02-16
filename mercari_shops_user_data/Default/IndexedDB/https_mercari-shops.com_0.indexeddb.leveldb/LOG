@@ -1,0 +1,13 @@
+2026/02/12-18:19:07.118 3d80 Reusing MANIFEST c:\Users\progr\Desktop\Python\mercari_dorekai\mercari_shops_user_data\Default\IndexedDB\https_mercari-shops.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/02/12-18:19:07.118 3d80 Recovering log #60
+2026/02/12-18:19:07.119 3d80 Reusing old log c:\Users\progr\Desktop\Python\mercari_dorekai\mercari_shops_user_data\Default\IndexedDB\https_mercari-shops.com_0.indexeddb.leveldb/000060.log 
+2026/02/12-18:19:07.681 6ad0 Level-0 table #64: started
+2026/02/12-18:19:07.706 6ad0 Level-0 table #64: 1878 bytes OK
+2026/02/12-18:19:07.711 6ad0 Delete type=0 #60
+2026/02/12-18:19:07.712 3d80 Manual compaction at level-0 from '\x00\x15\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x16\x00\x00\x00' @ 0 : 0; will stop at '\x00\x15\x00\x00\x05' @ 1280 : 1
+2026/02/12-18:19:07.712 3d80 Compacting 1@0 + 1@1 files
+2026/02/12-18:19:07.743 3d80 Generated table #65@0: 35 keys, 1377 bytes
+2026/02/12-18:19:07.743 3d80 Compacted 1@0 + 1@1 files => 1377 bytes
+2026/02/12-18:19:07.747 3d80 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/02/12-18:19:07.748 3d80 Delete type=2 #64
+2026/02/12-18:19:07.748 3d80 Manual compaction at level-0 from '\x00\x15\x00\x00\x05' @ 1280 : 1 .. '\x00\x16\x00\x00\x00' @ 0 : 0; will stop at (end)
